@@ -3,7 +3,8 @@
     header
         h1 Blog
         nav-bar
-    router-view
+    main
+        router-view
 </template>
 
 <script>
@@ -21,14 +22,18 @@ export default {
 body {
     margin: 0;
 }
+
 #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    color: #2c3e50;
+    color: #444;
     margin-top: 60px;
 }
 
-
+main {
+    margin: 1em;
+    font-size: 1.2em;
+}
 </style>
