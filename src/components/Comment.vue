@@ -10,6 +10,9 @@ article.comment
                 &nbsp;:~
         time {{creationDateString}}
     section.comment-body {{comment.text}}
+    footer.comment-footer
+        router-link(:to="commentDetailsLink").comment-details View
+        router-link(:to="commentEditLink").comment-details Edit
 </template>
 
 <script>
@@ -31,12 +34,12 @@ export default {
     ],
     created: function () {
         if (this.comment) {
-            if (this.showAuthor) {
+            if (this.showAuthor && this.comment.author) {
                 axios.get(`${config.api}users/${this.comment.author}`)
                     .then(res => this.author = res.data)
                     .catch(err => console.error(err));
             }
-            if (this.showPost) {
+            if (this.showPost && this.comment.post) {
                 axios.get(`${config.api}posts/${this.comment.post}`)
                     .then(res => this.post = res.data)
                     .catch(err => console.error(err));
@@ -69,6 +72,12 @@ export default {
         },
         postLink: function () {
             return `/posts/${this.comment.post}`;
+        },
+        commentDetailsLink: function () {
+            return `/comments/${this.comment._id}`;
+        },
+        commentEditLink: function () {
+            return `/comments/${this.comment._id}/edit`;
         }
     },
     components: {
@@ -79,7 +88,7 @@ export default {
 
 <style>
 .comment {
-    margin-bottom: 1em;
+    margin-bottom: 2em;
 }
 
 .comment > header .comment-info-left {
@@ -95,6 +104,17 @@ export default {
 
 .comment > section.comment-body {
     clear: left;
+}
+
+.comment > footer {
+    margin-top: 0.2em;
+    clear: left;
+}
+
+.comment > footer > * {
+    float: left;
+    margin-right: 0.4em;
+    font-size: 0.8em;
 }
 </style>
 

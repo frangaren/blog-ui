@@ -1,5 +1,5 @@
 <template lang="pug">
-ul(id="user-details")
+ul#user-details
     li
         b Nombre de usuario:&nbsp;
         span {{user.username}}
@@ -25,10 +25,14 @@ export default {
         axios.get(`${config.api}users/${this.$route.params.id}`)
             .then(res => this.user = res.data)
             .catch(err => console.error(err))
+    },
+    beforeRouteUpdate: function (to) {
+        axios.get(`${config.api}users/${to.params.id}`)
+            .then(res => this.user = res.data)
+            .catch(err => console.error(err))
     }
 }
 </script>
 
 <style>
-
 </style>
