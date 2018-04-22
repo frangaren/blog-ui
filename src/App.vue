@@ -38,4 +38,13 @@ main {
     margin: 1em -430px;
     font-size: 1.2em;
 }
+
+a {
+    text-decoration: none;
+    color: #444;
+}
+
+a:hover {
+    text-decoration: underline;
+}
 </style>

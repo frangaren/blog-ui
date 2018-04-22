@@ -1,13 +1,13 @@
 <template lang="pug">
 ul(id="user-details")
     li
-        b Nombre de usuario: 
+        b Nombre de usuario:&nbsp;
         span {{user.username}}
     li
-        b Name:
+        b Name:&nbsp;
         span {{user.name}}
     li
-        b Email:
+        b Email:&nbsp;
         span {{user.email}}
 </template>
 

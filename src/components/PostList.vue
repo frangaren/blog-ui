@@ -1,12 +1,12 @@
 <template lang="pug">
 #post-list
-    span(v-for="post in posts", :key="post._id") {{post.title}}
+    post(v-for="post in posts", :post="post", :key="post._id")
 </template>
 
 <script>
 import config from '@/config'
 import axios from 'axios'
-//import Post from '@/components/Post'
+import Post from '@/components/Post'
 
 export default {
     data: function () {
@@ -20,7 +20,7 @@ export default {
             .catch(err => console.error(err))
     },
     components: {
-        //'post': User
+        'post': Post
     }
 }
 </script>

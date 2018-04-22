@@ -1,6 +1,7 @@
 <template lang="pug">
-#user-list
-    user(v-for="user in users", :user="user", :key="user._id")
+ul#user-list
+    li(v-for="user in users")
+        user(:user="user", :key="user._id")
 </template>
 
 <script>

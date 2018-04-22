@@ -1,5 +1,5 @@
 <template lang="pug">
-.user 
+span.user
     router-link(:to="detailsUrl") {{user.username}}
 </template>
 
@@ -17,12 +17,4 @@ export default {
 </script>
 
 <style>
-.user > a {
-    text-decoration: none;
-    color: #444;
-}
-
-.user > a:hover {
-    text-decoration: underline;
-}
 </style>
