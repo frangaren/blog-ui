@@ -1,5 +1,6 @@
 <template lang="pug">
 #comment-list
+    button(@click="onClick") New
     comment(v-for="comment in comments", :comment="comment", 
         :key="comment._id", showAuthor, showPost)
 </template>
@@ -19,6 +20,11 @@ export default {
         axios.get(config.api + 'comments/')
             .then(res => this.comments = res.data)
             .catch(err => console.error(err))
+    },
+    methods: {
+        onClick: function () {
+            this.$router.push('/comments/create');
+        }
     },
     components: {
         'comment': Comment

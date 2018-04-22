@@ -2,6 +2,7 @@
 section.post-comments
     header
         h3 Comments:
+        button(@click="onClick") New
     comment(v-for="comment in comments", :comment="comment", 
         :key="comment._id", showAuthor)
 </template>
@@ -39,6 +40,11 @@ export default {
             }
         }
     },
+    methods: {
+        onClick: function () {
+            this.$router.push(`/comments/create?post=${this.post._id}`);            
+        }
+    },
     components: {
         comment: Comment
     }
@@ -48,5 +54,13 @@ export default {
 <style>
 .post-comments {
     text-align: left;
+}
+
+.post-comments > header > h3 {
+    margin-bottom: 0;
+}
+
+.post-comments > header > button {
+    margin-bottom: 2em;
 }
 </style>

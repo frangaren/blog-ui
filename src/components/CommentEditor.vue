@@ -1,17 +1,17 @@
 <template lang="pug">
 form#comment-editor(@submit="onSubmit")
     label Author:&nbsp;
-    select(required, v-model="comment.author")
+    select(required, v-model="newComment.author")
         option(disabled, value="") Choose an author
         option(v-for="user in users", :value="user._id") {{user.username}}
     br  
     label Post:&nbsp;
-    select(required, v-model="comment.post")
+    select(required, v-model="newComment.post")
         option(disabled, value="") Choose a post
         option(v-for="post in posts", :value="post._id") {{post.title}}
     br
     label Text:&nbsp;
-    textarea(required, v-model="comment.text")
+    textarea(required, v-model="newComment.text")
     br
     button(type="submit") Save
 </template>
@@ -24,6 +24,11 @@ import User from '@/components/User'
 export default {
     data: function() {
         return {
+            newComment: {
+                post: "",
+                author: "",
+                text: ""
+            },
             users: {},
             posts: {}
         }
@@ -32,7 +37,7 @@ export default {
         'comment'
     ],
     created: function () {
-        this.comment = this.value;
+        this.newComment = this.comment;
         axios.get(`${config.api}users`)
             .then(res => this.users = res.data)
             .catch(err => console.error(err));
@@ -40,9 +45,14 @@ export default {
             .then(res => this.posts= res.data)
             .catch(err => console.error(err));
     },
+    watch: {
+        comment: function () {
+            this.newComment = this.comment;
+        }
+    },
     methods: {
         onSubmit: function () {
-            this.$emit('submit', this.comment);
+            this.$emit('submit', this.newComment);
         }
     }
 }

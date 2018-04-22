@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
 import UserList from '@/components/UserList'
 import UserDetails from '@/components/UserDetails'
 import PostList from '@/components/PostList'
 import PostDetails from '@/components/PostDetails'
 import CommentList from '@/components/CommentList'
+import CommentCreate from '@/components/CommentCreate'
 import CommentDetails from '@/components/CommentDetails'
 import CommentEdit from '@/components/CommentEdit'
 
@@ -15,8 +15,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      component: PostList,
+      alias: '/posts'
     },
     {
       path: '/users',
@@ -42,6 +42,11 @@ export default new Router({
       path: '/comments',
       name: 'CommentList',
       component: CommentList
+    },
+    {
+      path: '/comments/create',
+      name: 'CommentCreate',
+      component: CommentCreate
     },
     {
       path: '/comments/:id',
