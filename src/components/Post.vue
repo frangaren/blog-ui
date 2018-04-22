@@ -7,6 +7,7 @@ article(class="post")
             user(:user="author")
             .
                 &nbsp;at {{creationDateString}}
+    slot
 </template>
 
 <script>
@@ -25,8 +26,15 @@ export default {
     },
     created: function () {
         axios.get(`${config.api}users/${this.post.author}`)
-            .then(res => {this.author = res.data; console.log(this.author)})
+            .then(res => this.author = res.data)
             .catch(err => console.error(err));
+    },
+    beforeUpdate: function () {
+        if (this.author._id !== this.post.author) {
+            axios.get(`${config.api}users/${this.post.author}`)
+                .then(res => this.author = res.data)
+                .catch(err => console.error(err));
+        }
     },
     computed: {
         detailsUrl: function () {

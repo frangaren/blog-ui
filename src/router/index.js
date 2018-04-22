@@ -4,6 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 import UserList from '@/components/UserList'
 import UserDetails from '@/components/UserDetails'
 import PostList from '@/components/PostList'
+import PostDetails from '@/components/PostDetails'
 
 Vue.use(Router)
 
@@ -28,6 +29,11 @@ export default new Router({
       path: '/posts',
       name: 'PostList',
       component: PostList
+    },
+    {
+      path: '/posts/:id',
+      name: 'PostDetails',
+      component: PostDetails
     }
   ]
 })

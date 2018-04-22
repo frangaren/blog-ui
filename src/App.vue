@@ -33,9 +33,9 @@ body {
 }
 
 main {
-    width: 860px;
+    width: 600px;
     padding-left: 50%;
-    margin: 1em -430px;
+    margin: 1em -300px;
     font-size: 1.2em;
 }
 
