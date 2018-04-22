@@ -1,11 +1,15 @@
 <template lang="pug">
 article.comment
     header
-        user(:user="author").author
-        .
-            &nbsp;:~
+        span.comment-info-left
+            user(:user="author", v-if="showAuthor")
+            span(v-if="showAuthor && showPost") &nbsp;at&nbsp;
+            span(v-if="showPost")
+                router-link(:to="postLink") "{{post.title}}"
+            .
+                &nbsp;:~
         time {{creationDateString}}
-    section {{comment.text}}
+    section.comment-body {{comment.text}}
 </template>
 
 <script>
@@ -16,24 +20,41 @@ import User from '@/components/User'
 export default {
     data: function() {
         return {
-            author: {}
+            author: {},
+            post: {}
         }
     },
     props: [
-        'comment'
+        'comment',
+        'showAuthor',
+        'showPost'
     ],
     created: function () {
         if (this.comment) {
-            axios.get(`${config.api}users/${this.comment.author}`)
-                .then(res => this.author = res.data)
-                .catch(err => console.error(err));
+            if (this.showAuthor) {
+                axios.get(`${config.api}users/${this.comment.author}`)
+                    .then(res => this.author = res.data)
+                    .catch(err => console.error(err));
+            }
+            if (this.showPost) {
+                axios.get(`${config.api}posts/${this.comment.post}`)
+                    .then(res => this.post = res.data)
+                    .catch(err => console.error(err));
+            }
         }
     },
     watch: {
         comment: function () {
-            axios.get(`${config.api}users/${this.comment.author}`)
-                .then(res => this.author = res.data)
-                .catch(err => console.error(err));
+            if (this.showAuthor) {
+                axios.get(`${config.api}users/${this.comment.author}`)
+                    .then(res => this.author = res.data)
+                    .catch(err => console.error(err));
+            }
+            if (this.showPost) {
+                axios.get(`${config.api}posts/${this.comment.post}`)
+                    .then(res => this.post = res.data)
+                    .catch(err => console.error(err));
+            }
         }
     },
     computed: {
@@ -45,6 +66,9 @@ export default {
             const hour = date.getHours();
             const minutes = date.getMinutes().toString().padStart(2, '0');
             return `${month}/${day}/${year} ${hour}:${minutes}`;         
+        },
+        postLink: function () {
+            return `/posts/${this.comment.post}`;
         }
     },
     components: {
@@ -58,7 +82,7 @@ export default {
     margin-bottom: 1em;
 }
 
-.comment > header .author{
+.comment > header .comment-info-left {
     float: left;
     font-weight: bold;
 }
@@ -67,6 +91,10 @@ export default {
     float: right;
     font-size: 0.8em;
     margin-top: 0.4em;
+}
+
+.comment > section.comment-body {
+    clear: left;
 }
 </style>
 

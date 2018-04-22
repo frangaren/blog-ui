@@ -5,6 +5,7 @@ import UserList from '@/components/UserList'
 import UserDetails from '@/components/UserDetails'
 import PostList from '@/components/PostList'
 import PostDetails from '@/components/PostDetails'
+import CommentList from '@/components/CommentList'
 
 Vue.use(Router)
 
@@ -34,6 +35,11 @@ export default new Router({
       path: '/posts/:id',
       name: 'PostDetails',
       component: PostDetails
+    },
+    {
+      path: '/comments',
+      name: 'CommentList',
+      component: CommentList
     }
   ]
 })

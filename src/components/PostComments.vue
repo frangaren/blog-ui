@@ -2,7 +2,8 @@
 section.post-comments
     header
         h3 Comments:
-    comment(v-for="comment in comments", :comment="comment", :key="comment._id")
+    comment(v-for="comment in comments", :comment="comment", 
+        :key="comment._id", showAuthor)
 </template>
 
 <script>
