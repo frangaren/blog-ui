@@ -7,6 +7,7 @@ import PostList from '@/components/PostList'
 import PostDetails from '@/components/PostDetails'
 import CommentList from '@/components/CommentList'
 import CommentDetails from '@/components/CommentDetails'
+import CommentEdit from '@/components/CommentEdit'
 
 Vue.use(Router)
 
@@ -46,6 +47,11 @@ export default new Router({
       path: '/comments/:id',
       name: 'CommentDetails',
       component: CommentDetails
+    },
+    {
+      path: '/comments/:id/edit',
+      name: 'CommentEdit',
+      component: CommentEdit
     }
   ]
 })
