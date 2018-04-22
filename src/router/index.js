@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import UserList from '@/components/UserList'
 import UserDetails from '@/components/UserDetails'
+import PostList from '@/components/PostList'
 
 Vue.use(Router)
 
@@ -22,6 +23,11 @@ export default new Router({
       path: '/users/:id',
       name: 'UserDetails',
       component: UserDetails
+    },
+    {
+      path: '/posts',
+      name: 'PostList',
+      component: PostList
     }
   ]
 })

@@ -33,7 +33,9 @@ body {
 }
 
 main {
-    margin: 1em;
+    width: 860px;
+    padding-left: 50%;
+    margin: 1em -430px;
     font-size: 1.2em;
 }
 </style>

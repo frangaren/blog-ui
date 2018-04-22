@@ -1,26 +1,26 @@
 <template lang="pug">
-#user-list
-    user(v-for="user in users", :user="user", :key="user._id")
+#post-list
+    span(v-for="post in posts", :key="post._id") {{post.title}}
 </template>
 
 <script>
 import config from '@/config'
 import axios from 'axios'
-import User from '@/components/User'
+//import Post from '@/components/Post'
 
 export default {
     data: function () {
         return {
-            users: []
+            posts: []
         }
     },
     created: function () {
-        axios.get(config.api + 'users/')
-            .then(res => this.users = res.data)
+        axios.get(config.api + 'posts/')
+            .then(res => this.posts = res.data)
             .catch(err => console.error(err))
     },
     components: {
-        'user': User
+        //'post': User
     }
 }
 </script>
