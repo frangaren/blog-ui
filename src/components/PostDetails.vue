@@ -2,12 +2,15 @@
 post(:post="post")
     hr
     section.post-body {{post.text}}
+    hr
+    comments(:post="post")
 </template>
 
 <script>
 import axios from 'axios'
 import config from '@/config'
 import Post from '@/components/Post.vue'
+import PostComments from '@/components/PostComments.vue'
 
 export default {
     data: function () {
@@ -26,7 +29,12 @@ export default {
             .catch(err => console.error(err));
     },
     components: {
-        post: Post
+        post: Post,
+        comments: PostComments
     }
 }
 </script>
+
+<style>
+
+</style>

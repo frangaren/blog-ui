@@ -25,15 +25,19 @@ export default {
         };
     },
     created: function () {
-        axios.get(`${config.api}users/${this.post.author}`)
-            .then(res => this.author = res.data)
-            .catch(err => console.error(err));
-    },
-    beforeUpdate: function () {
-        if (this.author._id !== this.post.author) {
+        if ('author' in this.post){
             axios.get(`${config.api}users/${this.post.author}`)
                 .then(res => this.author = res.data)
                 .catch(err => console.error(err));
+        }
+    },
+    watch: {
+        post: function () {
+            if (this.author._id !== this.post.author) {
+                axios.get(`${config.api}users/${this.post.author}`)
+                    .then(res => this.author = res.data)
+                    .catch(err => console.error(err));
+            }
         }
     },
     computed: {
