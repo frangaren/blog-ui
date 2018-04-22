@@ -1,11 +1,14 @@
 <template lang="pug">
 section.post-comments
-    div(v-for="comment in comments") {{comment.text}}
+    header
+        h3 Comments:
+    comment(v-for="comment in comments", :comment="comment", :key="comment._id")
 </template>
 
 <script>
 import axios from 'axios'
 import config from '@/config'
+import Comment from '@/components/Comment'
 
 export default {
     data: function () {
@@ -34,10 +37,15 @@ export default {
                     .catch(err => console.error(err));
             }
         }
+    },
+    components: {
+        comment: Comment
     }
 }
 </script>
 
 <style>
-
+.post-comments {
+    text-align: left;
+}
 </style>

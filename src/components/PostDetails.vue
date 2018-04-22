@@ -36,5 +36,7 @@ export default {
 </script>
 
 <style>
-
+.post-body {
+    text-align: left;
+}
 </style>

@@ -7,7 +7,8 @@ article(class="post")
             user(:user="author")
             .
                 &nbsp;at {{creationDateString}}
-    slot
+    section
+        slot
 </template>
 
 <script>
@@ -53,7 +54,7 @@ export default {
             const month = date.getMonth();
             const year = date.getFullYear();
             const hour = date.getHours();
-            const minutes = date.getMinutes();
+            const minutes = date.getMinutes().toString().padStart(2, '0');
             return `${month}/${day}/${year} ${hour}:${minutes}`;         
         }
     },
@@ -68,7 +69,11 @@ export default {
     margin-bottom: 0.25em;
 }
 
-.author {
-    font-style: italic;
+.post > section {
+    text-align: left;
+}
+
+.post > section hr {
+    margin: 1em 0;
 }
 </style>
