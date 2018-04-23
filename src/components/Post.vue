@@ -9,6 +9,9 @@ article(class="post")
                 &nbsp;at {{creationDateString}}
     section
         slot
+    footer.post-footer
+        router-link(:to="postEditLink") Edit
+        a(@click="onDelete") Delete
 </template>
 
 <script>
@@ -18,7 +21,8 @@ import User from '@/components/User'
 
 export default {
     props: [
-        'post'
+        'post',
+        'deleteRedirect'
     ],
     data: function () {
         return {
@@ -41,12 +45,28 @@ export default {
             }
         }
     },
+    methods: {
+        onDelete: function () {
+            axios.delete(`${config.api}posts/${this.post._id}`)
+                .then(res => {
+                    if (this.deleteRedirect) {
+                        this.$router.push(this.deleteRedirect);
+                    } else {
+                        this.$router.go(this.$router.history.current);
+                    }
+                })
+                .catch(err => console.error(err));            
+        }
+    },
     computed: {
         detailsUrl: function () {
             return `/posts/${this.post._id}`;
         },
         authorUrl: function () {
             return `/users/${this.post.author}`;
+        },
+        postEditLink: function () {
+            return `/posts/${this.post._id}/edit`;
         },
         creationDateString: function () {
             const date = new Date(this.post.creationDate);
@@ -75,5 +95,19 @@ export default {
 
 .post > section hr {
     margin: 1em 0;
+}
+
+.post > footer {
+    margin-top: 1em;
+    text-align: center;
+}
+
+.post > footer > * {
+    margin-right: 0.4em;
+    font-size: 0.8em;
+}
+
+.post > hr {
+    clear: left;
 }
 </style>

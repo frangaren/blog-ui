@@ -1,7 +1,8 @@
 <template lang="pug">
-post(:post="post")
-    hr
-    section.post-body {{post.text}}
+#post-details
+    post(:post="post", deleteRedirect="/")
+        hr
+        section.post-body {{post.text}}
     hr
     comments(:post="post")
 </template>

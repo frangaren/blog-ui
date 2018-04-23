@@ -50,7 +50,6 @@ export default {
     },
     methods: {
         onDelete: function () {
-            console.log('asd');
             axios.delete(`${config.api}comments/${this.comment._id}`)
                 .then(res => {
                     if (this.deleteRedirect) {

@@ -1,7 +1,7 @@
 <template lang="pug">
 section.post-comments
     header
-        h3 Comments:
+        h2 Comments:
         button(@click="onClick") New
     comment(v-for="comment in comments", :comment="comment", 
         :key="comment._id", showAuthor)
