@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import UserList from '@/components/UserList'
 import UserCreate from '@/components/UserCreate'
 import UserDetails from '@/components/UserDetails'
+import UserEdit from '@/components/UserEdit'
 import PostList from '@/components/PostList'
 import PostCreate from '@/components/PostCreate'
 import PostDetails from '@/components/PostDetails'
@@ -35,6 +36,11 @@ export default new Router({
       path: '/users/:id',
       name: 'UserDetails',
       component: UserDetails
+    },
+    {
+      path: '/users/:id/edit',
+      name: 'UserEdit',
+      component: UserEdit
     },
     {
       path: '/posts',

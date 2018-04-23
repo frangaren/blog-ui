@@ -42,7 +42,7 @@ export default {
         this.newUser = this.user;
     },
     watch: {
-        comment: function () {
+        user: function () {
             this.newUser = this.user;
         }
     },

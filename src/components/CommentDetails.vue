@@ -1,6 +1,6 @@
 <template lang="pug">
 comment(:comment="comment", showAuthor, showPost, 
-    deleteRedirect="/")#comment-details
+    deleteRedirect="/comments")#comment-details
 </template>
 
 <script>

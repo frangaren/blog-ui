@@ -1,6 +1,6 @@
 <template lang="pug">
-ul#user-list
-    li(v-for="user in users")
+#user-list
+    div(v-for="user in users")
         user(:user="user", :key="user._id")
 </template>
 
