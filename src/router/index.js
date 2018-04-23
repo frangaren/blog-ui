@@ -4,6 +4,7 @@ import UserList from '@/components/UserList'
 import UserDetails from '@/components/UserDetails'
 import PostList from '@/components/PostList'
 import PostDetails from '@/components/PostDetails'
+import PostEdit from '@/components/PostEdit'
 import CommentList from '@/components/CommentList'
 import CommentCreate from '@/components/CommentCreate'
 import CommentDetails from '@/components/CommentDetails'
@@ -37,6 +38,11 @@ export default new Router({
       path: '/posts/:id',
       name: 'PostDetails',
       component: PostDetails
+    },
+    {
+      path: '/posts/:id/edit',
+      name: 'PostEdit',
+      component: PostEdit
     },
     {
       path: '/comments',
