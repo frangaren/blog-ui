@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import UserList from '@/components/UserList'
+import UserCreate from '@/components/UserCreate'
 import UserDetails from '@/components/UserDetails'
 import PostList from '@/components/PostList'
 import PostCreate from '@/components/PostCreate'
@@ -24,6 +25,11 @@ export default new Router({
       path: '/users',
       name: 'UserList',
       component: UserList
+    },
+    {
+      path: '/users/create',
+      name: 'UserCreate',
+      component: UserCreate
     },
     {
       path: '/users/:id',

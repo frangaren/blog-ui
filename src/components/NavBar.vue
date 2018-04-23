@@ -4,6 +4,7 @@ nav(id="navbar")
     router-link(to="/users") Users
     router-link(to="/posts") Posts
     router-link(to="/comments") Comments
+    router-link(to="/users/create") Register
 </template>
 
 <script>
