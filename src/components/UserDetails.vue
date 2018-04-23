@@ -9,8 +9,8 @@
     b Email:&nbsp;
     span {{user.email}}
     br
-    button(@click="onEdit") Editar
-    button(@click="onDelete") Borrar
+    button(@click="onEdit") Edit
+    button(@click="onDelete") Delete
 </template>
 
 <script>
