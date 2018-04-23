@@ -19,6 +19,11 @@ export default {
     created: function () {
         axios.get(config.api + 'comments/')
             .then(res => this.comments = res.data)
+            .catch(err => console.error(err));
+    },
+    beforeRouteUpdate: function () {
+        axios.get(config.api + 'comments/')
+            .then(res => Vue.set(this, 'comments', res.data))
             .catch(err => console.error(err))
     },
     methods: {

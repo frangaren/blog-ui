@@ -11,8 +11,9 @@ article.comment
         time {{creationDateString}}
     section.comment-body {{comment.text}}
     footer.comment-footer
-        router-link(:to="commentDetailsLink").comment-details View
-        router-link(:to="commentEditLink").comment-details Edit
+        router-link(:to="commentDetailsLink") View
+        router-link(:to="commentEditLink") Edit
+        a(@click="onDelete") Delete
 </template>
 
 <script>
@@ -30,7 +31,8 @@ export default {
     props: [
         'comment',
         'showAuthor',
-        'showPost'
+        'showPost',
+        'deleteRedirect'
     ],
     created: function () {
         if (this.comment) {
@@ -44,6 +46,20 @@ export default {
                     .then(res => this.post = res.data)
                     .catch(err => console.error(err));
             }
+        }
+    },
+    methods: {
+        onDelete: function () {
+            console.log('asd');
+            axios.delete(`${config.api}comments/${this.comment._id}`)
+                .then(res => {
+                    if (this.deleteRedirect) {
+                        this.$router.push(this.deleteRedirect);
+                    } else {
+                        this.$router.go(this.$router.history.current);
+                    }
+                })
+                .catch(err => console.error(err));            
         }
     },
     watch: {
