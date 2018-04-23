@@ -1,5 +1,6 @@
 <template lang="pug">
 #post-list
+    button(@click="onNew") New
     post(v-for="post in posts", :post="post", :key="post._id")
 </template>
 
@@ -18,6 +19,11 @@ export default {
         axios.get(config.api + 'posts/')
             .then(res => this.posts = res.data)
             .catch(err => console.error(err))
+    },
+    methods: {
+        onNew: function () {
+            this.$router.push('/posts/create');
+        }
     },
     components: {
         'post': Post

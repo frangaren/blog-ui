@@ -85,12 +85,17 @@ export default {
 </script>
 
 <style>
+.post > header {
+    text-align: center;
+}
+
 .post > header > h2 {
     margin-bottom: 0.25em;
 }
 
 .post > section {
     text-align: left;
+    white-space: pre;
 }
 
 .post > section hr {
