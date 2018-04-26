@@ -1,6 +1,6 @@
 <template lang="pug">
 #comment-list
-    button(@click="onClick") New
+    button(@click="onClick", v-if="$auth.state.logged") New
     comment(v-for="comment in comments", :comment="comment", 
         :key="comment._id", showAuthor, showPost)
 </template>

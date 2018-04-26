@@ -10,8 +10,8 @@ article(class="post")
     section
         slot
     footer.post-footer
-        router-link(:to="postEditLink") Edit
-        a(@click="onDelete") Delete
+        router-link(:to="postEditLink", v-if="$auth.state.userId == post.author") Edit
+        a(@click="onDelete", v-if="$auth.state.userId == post.author") Delete
 </template>
 
 <script>

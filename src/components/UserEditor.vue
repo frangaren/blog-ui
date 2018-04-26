@@ -11,7 +11,7 @@ form#comment-editor(@submit="onSubmit")
     input(required, v-model="newUser.name")
     br
     label Password:&nbsp;
-    input(required, v-model="newUser.password", 
+    input(required, type="password", v-model="newUser.password", 
         @change="validatePassword")
     br
     .error

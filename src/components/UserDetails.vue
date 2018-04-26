@@ -9,8 +9,8 @@
     b Email:&nbsp;
     span {{user.email}}
     br
-    button(@click="onEdit") Edit
-    button(@click="onDelete") Delete
+    button(@click="onEdit", v-if="$auth.state.userId == user._id") Edit
+    button(@click="onDelete", v-if="$auth.state.userId == user._id") Delete
 </template>
 
 <script>

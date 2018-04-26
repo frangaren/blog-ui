@@ -1,5 +1,5 @@
 <template lang="pug">
-#user-create
+#user-create(v-if="!$auth.state.logged")
     user-editor(:user="user", @submit="onSubmit") {{error}}
 </template>
 

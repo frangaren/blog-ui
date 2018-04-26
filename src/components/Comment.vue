@@ -12,8 +12,8 @@ article.comment
     section.comment-body {{comment.text}}
     footer.comment-footer
         router-link(:to="commentDetailsLink") View
-        router-link(:to="commentEditLink") Edit
-        a(@click="onDelete") Delete
+        router-link(:to="commentEditLink", v-if="$auth.state.userId == comment.author") Edit
+        a(@click="onDelete", v-if="$auth.state.userId == comment.author") Delete
 </template>
 
 <script>

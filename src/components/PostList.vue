@@ -1,6 +1,6 @@
 <template lang="pug">
 #post-list
-    button(@click="onNew") New
+    button(@click="onNew", v-if="$auth.state.logged") New
     post(v-for="post in posts", :post="post", :key="post._id")
 </template>
 

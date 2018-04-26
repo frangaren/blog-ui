@@ -4,12 +4,18 @@ nav(id="navbar")
     router-link(to="/users") Users
     router-link(to="/posts") Posts
     router-link(to="/comments") Comments
-    router-link(to="/users/create") Register
+    router-link(to="/users/create", v-if="!$auth.state.logged") Register
+    router-link(to="/users/login", v-if="!$auth.state.logged") Login
+    a(to="/users/login", v-if="$auth.state.logged", @click="onLogout") Logout
 </template>
 
 <script>
 export default {
-
+    methods: {
+        onLogout: function () {
+            this.$auth.logout();
+        }
+    }
 }
 </script>
 

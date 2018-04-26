@@ -1,10 +1,5 @@
 <template lang="pug">
 form#comment-editor(@submit="onSubmit")
-    label Author:&nbsp;
-    select(required, v-model="newComment.author")
-        option(disabled, value="") Choose an author
-        option(v-for="user in users", :value="user._id") {{user.username}}
-    br  
     label Post:&nbsp;
     select(required, v-model="newComment.post")
         option(disabled, value="") Choose a post

@@ -2,12 +2,7 @@
 form#post-editor(@submit="onSubmit")
     label Title:&nbsp;
     input(required, type="text", v-model="newPost.title")
-    br
-    label Author:&nbsp;
-    select(required, v-model="newPost.author")
-        option(disabled, value="") Choose an author
-        option(v-for="user in users", :value="user._id") {{user.username}}
-    br  
+    br 
     label Text:&nbsp;
     textarea(required, v-model="newPost.text")
     br
@@ -23,7 +18,6 @@ export default {
         return {
             newPost: {
                 title: "",
-                author: "",
                 text: ""
             },
             users: {}
